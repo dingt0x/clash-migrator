@@ -1,0 +1,22 @@
+[project]
+name = "clash-migrator"
+version = "0.1.0"
+description = "a migrator of migrating subscribes and rules"
+requires-python = "==3.13"
+
+dependencies = [
+    "aiohttp",
+    "pyyaml",
+    "urllib3",
+    "aiofiles",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "dotenv",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests","src"]

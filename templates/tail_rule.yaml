@@ -1,0 +1,14 @@
+- RULE-SET,applications,DIRECT
+- RULE-SET,private,DIRECT
+- RULE-SET,direct,DIRECT
+- RULE-SET,icloud,🍎 Apple
+- RULE-SET,apple,🍎 Apple
+- RULE-SET,reject,🛑 广告拦截
+- RULE-SET,proxy,🌎 全球代理
+- RULE-SET,google,🌎 全球代理
+- RULE-SET,lancidr,DIRECT
+- RULE-SET,cncidr,DIRECT
+- RULE-SET,telegramcidr,🌎 全球代理
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,🐟 漏网之鱼
