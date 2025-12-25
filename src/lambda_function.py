@@ -1,22 +1,17 @@
-# import sys
-# import time
-# from pathlib import Path
-#
-import yaml
+import os
+import sys
 import config
 import time
 import json
 import asyncio
-from typing import Dict, List, Any
+import yaml
+from pathlib import Path
+from typing import List
 import rule
 import proxy
 import clash
 from rule_provider import RuleProviderRender
-
-from utils import *
-
-import sys
-from pathlib import Path
+from utils import get_url_and_prefix_list
 
 vendor_path = str(Path(__file__).parent.parent/"vendor")
 if vendor_path not in sys.path:
@@ -75,7 +70,6 @@ async def generate_clash_config_str(url_list: List[str], prefix_list: List[str])
                 proxy_group.setdefault('proxies', []).extend(auto_proxy_name_list)
         else:
             proxy_group_proxies = proxy_group.setdefault('proxies', [])
-
             if delete_auto_group:
                 del_auto_in_proxy_index = 65535
                 for i,v in enumerate(proxy_group_proxies):
@@ -83,7 +77,6 @@ async def generate_clash_config_str(url_list: List[str], prefix_list: List[str])
                         del_auto_in_proxy_index = i
                 if del_auto_in_proxy_index != 65535:
                     del proxy_group_proxies[del_auto_in_proxy_index]
-
 
             proxy_group_proxies.extend(proxy_name_list)
 
