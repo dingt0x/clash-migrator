@@ -1,21 +1,27 @@
 import os
 import sys
+from pathlib import Path
+
+vendor_path = str(Path(__file__).parent.parent/"vendor")
+if vendor_path not in sys.path:
+    sys.path.append(vendor_path)
+
+current_path = str(Path(__file__).parent)
+if current_path not in sys.path:
+    sys.path.append(current_path)
+
+
 import config
 import time
 import json
 import asyncio
 import yaml
-from pathlib import Path
 from typing import List
 import rule
 import proxy
 import clash
 from rule_provider import RuleProviderRender
 from utils import get_url_and_prefix_list
-
-vendor_path = str(Path(__file__).parent.parent/"vendor")
-if vendor_path not in sys.path:
-    sys.path.append(vendor_path)
 
 
 async def generate_singbox_config_str() -> str:
