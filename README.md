@@ -43,6 +43,7 @@ python版本： `python3.13`
 完成
 
 ## 2. 将proxy_group 拆分出来
+完成
 
 
 ## 3. 新增自定义分组
@@ -51,6 +52,6 @@ python版本： `python3.13`
 ```
 NEW_GROUP="🇯🇵日本-Zhao,日本-自有;🇺🇸美国,美国-100M"
 ```
-2) 使用config(第一种方式好)
+2) 使用config(第一种方式吧~)
 
 
