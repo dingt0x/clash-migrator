@@ -11,6 +11,12 @@ def test_lambda_handler():
     target_file1 = cache_dir / "clash_rule_test.yaml"
     x = lambda_handler({}, {})
 
+    if not cache_dir.exists():
+        cache_dir.mkdir()
+
+
+
+
     if x.get('statusCode',0) == 200:
         content = x.get("body")
         with target_file1.open('w', encoding='utf-8') as f1:
