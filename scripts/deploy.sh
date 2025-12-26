@@ -65,6 +65,14 @@ zip -r "${zip_file}" src/ templates/ vendor/ \
 
 echo "部署包创建完成: ${zip_file}"
 
+echo -n "Update functon config ... "
+aws lambda update-function-configuration \
+    --function-name  "${LAMBDA_FUNCTION_NAME}" \
+    --handler 'src.lambda_function.lambda_handler' \
+    --timeout 30 \
+    --no-cli-pager --output json > /dev/null
+echo "✅  "
+
 # 更新Lambda函数代码
 echo -n "更新 Lambda函数 ${LAMBDA_FUNCTION_NAME} ... "
 aws lambda update-function-code \
@@ -90,19 +98,13 @@ echo "✅  "
 #    exit 1
 #fi
 
-#echo -n "Update functon config ... "
-#aws lambda update-function-configuration \
-#    --function-name  "${LAMBDA_FUNCTION_NAME}" \
-#    --handler 'src.lambda_function.lambda_handler' \
-#    --timeout 30 \
-#    --no-cli-pager --output json > /dev/null
-#echo "✅  "
 
-#echo -n "Publish version ... "
-#aws lambda publish-version \
-#    --function-name "${LAMBDA_FUNCTION_NAME}" \
-#    --no-cli-pager  --output json || true  > /dev/null
-#echo "✅  "
+
+echo -n "Publish version ... "
+aws lambda publish-version \
+    --function-name "${LAMBDA_FUNCTION_NAME}" \
+    --no-cli-pager  --output json || true  > /dev/null
+echo "✅  "
 
 
 echo "部署完成！"
