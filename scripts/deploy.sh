@@ -89,19 +89,20 @@ echo "✅  "
 #    echo "❌ Lambda函数更新失败"
 #    exit 1
 #fi
-echo -n "Update functon config ... "
-aws lambda update-function-configuration \
-    --function-name  "${LAMBDA_FUNCTION_NAME}" \
-    --handler 'src.lambda_function.lambda_handler' \
-    --timeout 30 \
-    --no-cli-pager --output json > /dev/null
-echo "✅  "
 
-echo -n "Publish version ... "
-aws lambda publish-version \
-    --function-name "${LAMBDA_FUNCTION_NAME}" \
-    --no-cli-pager  --output json  > /dev/null
-echo "✅  "
+#echo -n "Update functon config ... "
+#aws lambda update-function-configuration \
+#    --function-name  "${LAMBDA_FUNCTION_NAME}" \
+#    --handler 'src.lambda_function.lambda_handler' \
+#    --timeout 30 \
+#    --no-cli-pager --output json > /dev/null
+#echo "✅  "
+
+#echo -n "Publish version ... "
+#aws lambda publish-version \
+#    --function-name "${LAMBDA_FUNCTION_NAME}" \
+#    --no-cli-pager  --output json || true  > /dev/null
+#echo "✅  "
 
 
 echo "部署完成！"
