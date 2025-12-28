@@ -10,6 +10,7 @@ from dotenv import load_dotenv,find_dotenv
 
 load_dotenv(find_dotenv())
 
+@pytest.mark.provider
 @pytest.mark.parametrize(["tpl_file", "fqdn", "want"],[
     [config.rule_providers_tpl_path, "baidu.com", True],
     [config.rule_providers_tpl_path, "baidu.com:443", True],
@@ -24,8 +25,11 @@ def test_rule_provider(tpl_file: Path, fqdn:str, want: bool):
     except FileNotFoundError as _:
          assert False == want
          return
+
     is_yaml = is_yaml_string(res)
-    assert is_yaml == want
+    if is_yaml != want:
+        print(res)
+        assert  is_yaml == want
 
 
 

@@ -19,18 +19,24 @@ class ProxyGroup:
                                       "name": name1, "filter": proxy_filter})
 
             group_custom_list.append({"group": {'name': name2, 'type': 'url-test', 'proxies': [], 'tolerance': 50,
-                                                'lazy': True, 'url': 'http://www.gstatic.com/generate_204',
+                                                'lazy': True, 'url': 'http://cp.cloudflare.com/generate_204',
                                                 'interval': 150},
                                       "name": name2, "filter": proxy_filter})
 
         group_custom_dict = {i["name"]: i for i in group_custom_list}
-        group_custom_names = {i["name"]: i for i in group_custom_list}
+        group_custom_names = [i["name"] for i in group_custom_list]
 
 
         for i in group_custom_list[::-1]:
             self.proxy_group_list.insert(1, i["group"])
 
         auto_proxy_filter = os.environ.get("AUTO_PROXY_FILTER", config.auto_proxy_filter)
+
+        japan_proxy_filter_list = ["日本", "东京", "Japan"]
+        us_proxy_filter_list = ["美国"]
+
+        custom_proxies = []
+
         for index, proxy_group in enumerate(self.proxy_group_list):
             proxy_group_name = proxy_group.get("name", "")
             if proxy_group_name == "":
@@ -46,16 +52,36 @@ class ProxyGroup:
                     auto_proxy_name_list = list(
                         filter(lambda x: any(f in x for f in auto_proxy_filter_list), self.proxy_name_list))
                     proxy_group.setdefault('proxies', []).extend(auto_proxy_name_list)
+            elif "🇯🇵 日本" == proxy_group_name:
+                japan_proxy_name_list_by_filter = list(
+                    filter(lambda x: any(f in x for f in japan_proxy_filter_list), self.proxy_name_list))
+                japan_proxy_name_list = list(
+                    filter(lambda x: x not in custom_proxies, japan_proxy_name_list_by_filter)
+                )
+                proxy_group.setdefault('proxies', []).extend(japan_proxy_name_list)
+            elif "🇺🇸 美国"  == proxy_group_name:
+                us_proxy_name_list_by_filter = list(
+                    filter(lambda x: any(f in x for f in us_proxy_filter_list), self.proxy_name_list))
+                us_proxy_name_list = list(
+                    filter(lambda x: x not in custom_proxies, us_proxy_name_list_by_filter)
+                )
+                proxy_group.setdefault('proxies', []).extend(us_proxy_name_list)
+
             elif proxy_group_name in group_custom_names:
                 x_proxy_filter_list = group_custom_dict[proxy_group_name].get("filter")
                 x_proxy_name_list = list(
                     filter(lambda x: any(f in x for f in x_proxy_filter_list), self.proxy_name_list))
+                custom_proxies.extend(x_proxy_name_list)
                 proxy_group.setdefault('proxies', []).extend(x_proxy_name_list)
 
-            else:
+            elif proxy_group_name == "🔰 手动选择":
                 proxy_group_proxies = proxy_group.setdefault('proxies', [])
+
+                manual_proxy_name_list = list(
+                    filter(lambda x: x not in custom_proxies, self.proxy_name_list)
+                )
                 proxy_group_proxies.extend(group_custom_names)
-                proxy_group_proxies.extend(self.proxy_name_list)
+                proxy_group_proxies.extend(manual_proxy_name_list)
         self.del_empty()
 
 

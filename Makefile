@@ -14,7 +14,9 @@ dependency-prod: ## 安装生产依赖到vendor
 dependency: dependency-dev dependency-prod
 
 test: ## 测试
-	@pytest -v
+	@pytest -v -m "not offline"
+test-s: ## 测试
+	@pytest -v -s -m "not offline"
 
 deploy: dependency-prod test ## 部署，默认部署到test环境
 	@bash ./scripts/deploy.sh test-env
