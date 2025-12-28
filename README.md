@@ -55,3 +55,6 @@ GROUP_CUSTOM="🇯🇵日本-Zhao,日本-自有;🇺🇸美国,美国-100M"
 2) 使用config(第一种方式吧~)
 
 
+# 其他
+## 相关资源：
+* https://github.com/ACL4SSR/ACL4SSR
