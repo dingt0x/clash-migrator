@@ -6,6 +6,7 @@ class ProxyGroup:
     def __init__(self, proxy_group_list: List[Dict],proxy_name_list: str):
         self.proxy_group_list = proxy_group_list
         self.proxy_name_list = proxy_name_list
+        self.to_del = set()
 
 
     def __call__(self):
@@ -53,18 +54,20 @@ class ProxyGroup:
                         filter(lambda x: any(f in x for f in auto_proxy_filter_list), self.proxy_name_list))
                     proxy_group.setdefault('proxies', []).extend(auto_proxy_name_list)
             elif "🇯🇵 日本" == proxy_group_name:
-                japan_proxy_name_list_by_filter = list(
-                    filter(lambda x: any(f in x for f in japan_proxy_filter_list), self.proxy_name_list))
                 japan_proxy_name_list = list(
-                    filter(lambda x: x not in custom_proxies, japan_proxy_name_list_by_filter)
-                )
+                    filter(lambda x: any(f in x for f in japan_proxy_filter_list), self.proxy_name_list))
+                if custom_proxies:
+                    japan_proxy_name_list = list(
+                        filter(lambda x: x not in custom_proxies, japan_proxy_name_list)
+                    )
                 proxy_group.setdefault('proxies', []).extend(japan_proxy_name_list)
             elif "🇺🇸 美国"  == proxy_group_name:
-                us_proxy_name_list_by_filter = list(
-                    filter(lambda x: any(f in x for f in us_proxy_filter_list), self.proxy_name_list))
                 us_proxy_name_list = list(
-                    filter(lambda x: x not in custom_proxies, us_proxy_name_list_by_filter)
-                )
+                    filter(lambda x: any(f in x for f in us_proxy_filter_list), self.proxy_name_list))
+                if custom_proxies:
+                    us_proxy_name_list = list(
+                        filter(lambda x: x not in custom_proxies, us_proxy_name_list)
+                    )
                 proxy_group.setdefault('proxies', []).extend(us_proxy_name_list)
 
             elif proxy_group_name in group_custom_names:
@@ -83,19 +86,19 @@ class ProxyGroup:
                 proxy_group_proxies.extend(group_custom_names)
                 proxy_group_proxies.extend(manual_proxy_name_list)
         self.del_empty()
+        return self.proxy_group_list
+
 
 
     def del_empty(self):
-        to_del_set = set()
-        to_del_index = []
-        for i, proxy_group in  enumerate(self.proxy_group_list):
-            if not proxy_group.get('proxies', []):
-                to_del_set.add(proxy_group.get('name'))
-                to_del_index.append(i)
+        to_del_set = self.to_del
+        pl = [i for i in self.proxy_group_list if self.exclude_empty(i)]
+        self.proxy_group_list = pl
+        # import json
+        # print(json.dumps(pl,indent=2,ensure_ascii=False))
 
-        for i in to_del_index:
-            del self.proxy_group_list[i]
 
+        # self.proxy_group_list = [i for i in self.proxy_group_list if self.exclude_empty(i)]
 
         for proxy_group in self.proxy_group_list:
             proxies_names = proxy_group.get('proxies',[])
@@ -105,6 +108,15 @@ class ProxyGroup:
 
             for i in to_delete_in_proxy_group:
                 proxies_names.remove(i)
+    def exclude_empty(self, proxy_group):
+        proxies = proxy_group.get('proxies', [])
+        if not proxies:
+            proxy_group_name = proxy_group.get('name', '')
+            if proxy_group_name:
+                self.to_del.add(proxy_group_name)
+            return False
+        return True
+
 
 
 

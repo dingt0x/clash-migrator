@@ -60,7 +60,7 @@ async def generate_clash_config_str(url_list: List[str], prefix_list: List[str])
         raise ValueError(f"{clash_tmpl_file} Error, 没找到 proxy-groups")
 
     pg = ProxyGroup(proxy_group_list, proxy_name_list)
-    pg()
+    final_config["proxy-groups"] = pg()
 
     if "rules" in final_config:
         final_config.pop("rules")
