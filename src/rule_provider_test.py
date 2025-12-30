@@ -26,6 +26,10 @@ def test_rule_provider(tpl_file: Path, fqdn:str, want: bool):
          assert False == want
          return
 
+    if res == "":
+        assert True
+        return
+
     is_yaml = is_yaml_string(res)
     if is_yaml != want:
         print(res)

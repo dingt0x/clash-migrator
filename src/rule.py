@@ -101,6 +101,5 @@ class RuleGenerator:
         with open(self.tail_rule_file, 'r') as f:
             default_rule = f.read()
 
-        # default_rule = "- GEOIP,CN,DIRECT\n- MATCH,🐟 漏网之鱼\n"
 
         return res + default_rule

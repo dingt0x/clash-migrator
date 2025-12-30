@@ -28,3 +28,5 @@ deploy-prod: dependency-prod test ## 部署到生成环境
 	@bash ./scripts/deploy.sh prod-env
 	@echo "🎉 Deployment successful"
 
+download: ## 下载规则文件
+	@bash ./scripts/update_rules.sh
