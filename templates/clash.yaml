@@ -24,9 +24,9 @@ dns:
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies: []
 proxy-groups:
-    - { name: '♻️ 自动选择', type: url-test, proxies: [],tolerance: 50, lazy: true, url: 'http://cp.cloudflare.com/generate_204', interval: 150 }
+    - { name: '♻️ 自动选择', type: url-test, proxies: [],tolerance: 50, lazy: true, url: 'http://www.gstatic.com/generate_204', interval: 150 }
     - { name: '🇯🇵 日本', type: select, proxies: [] }
-    - { name: '🇯🇵 日本 ♻️ 自动选择', type: url-test, proxies: [],tolerance: 50, lazy: true, url: 'http://cp.cloudflare.com/generate_204', interval: 150 }
+    - { name: '🇯🇵 日本 ♻️ 自动选择', type: url-test, proxies: [],tolerance: 50, lazy: true, url: 'http://www.gstatic.com/generate_204', interval: 150 }
     - { name: '🇺🇸 美国', type: select, proxies: [] }
     - { name: '🔰 手动选择', type: select, proxies: ['♻️ 自动选择', '🇯🇵 日本', '🇯🇵 日本 ♻️ 自动选择', '🇺🇸 美国'] }
     - { name: '⚛️ AI', type: select, proxies: ['🔰 手动选择', '♻️ 自动选择', '🇯🇵 日本','🇯🇵 日本 ♻️ 自动选择', '🇺🇸 美国'] }

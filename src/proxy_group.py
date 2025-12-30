@@ -20,7 +20,7 @@ class ProxyGroup:
                                       "name": name1, "filter": proxy_filter})
 
             group_custom_list.append({"group": {'name': name2, 'type': 'url-test', 'proxies': [], 'tolerance': 50,
-                                                'lazy': True, 'url': 'http://cp.cloudflare.com/generate_204',
+                                                'lazy': True, 'url': 'http://www.gstatic.com/generate_204',
                                                 'interval': 150},
                                       "name": name2, "filter": proxy_filter})
 
