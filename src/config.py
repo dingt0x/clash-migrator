@@ -6,7 +6,7 @@ tail_rule_path= templates_dir / "tail_rule.yaml"
 rule_providers_tpl_path= templates_dir / "rule_providers.yaml.tpl"
 proxy_groups_tpl_path = templates_dir / "proxy_groups.yaml.tpl"
 
-proxy_filter="trojan-35094,vless-rality,tuic-tls,美,日本,东京,香港,Hong,Japan,United,Traffic,Expire,剩余,重置,到期,bothyi"
+proxy_filter="vless-rality,美,日本,东京,新加坡,香港,Hong,Japan,United,Traffic,Expire,剩余,重置,到期,bothyi"
 auto_proxy_filter = "trojan-35094,vless-rality,tuic-tls,天伟"
 
 rule_group_map = [
