@@ -20,5 +20,5 @@ rule_group_map = [
     {"path": "proxy", "rule": "🌎 全球代理"},
 ]
 
-group_custom = "🇯🇵 天伟,天伟,trojan-35094,vless-rality,tuic-tls;🇯🇵 zhao,日本-自有"
+group_custom = "🇯🇵 天伟,天伟,trojan-35094,vless-rality,tuic-tls"
 static_proxies = [] # 明文配置规则，计划废弃

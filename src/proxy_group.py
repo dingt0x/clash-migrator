@@ -53,7 +53,7 @@ class ProxyGroup:
                     auto_proxy_name_list = list(
                         filter(lambda x: any(f in x for f in auto_proxy_filter_list), self.proxy_name_list))
                     proxy_group.setdefault('proxies', []).extend(auto_proxy_name_list)
-            elif "🇯🇵 日本" == proxy_group_name:
+            elif "🇯🇵 日本" == proxy_group_name or "🇯🇵 日本 ♻️ 自动选择" == proxy_group_name:
                 japan_proxy_name_list = list(
                     filter(lambda x: any(f in x for f in japan_proxy_filter_list), self.proxy_name_list))
                 if custom_proxies:
