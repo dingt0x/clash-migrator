@@ -46,28 +46,28 @@ ruleset_items_custom =  [
         "behavior": "classical",
         "proxy_group": "DIRECT",
         "uri_suffix": "custom/direct.yaml",
-        "full_uri": custom_uri_prefix + "direct.list"
+        "full_uri": custom_uri_prefix + "direct.yaml"
     },
     {
         "name": "CustomAI",
         "behavior": "classical",
         "proxy_group": "⚛️ AI",
         "uri_suffix": "custom/ai.yaml",
-        "full_uri": custom_uri_prefix + "ai.list"
+        "full_uri": custom_uri_prefix + "ai.yaml"
     },
     {
         "name": "CustomApple",
         "behavior": "classical",
         "proxy_group": "🍎 Apple",
         "uri_suffix": "custom/apple.yaml",
-        "full_uri": custom_uri_prefix + "apple.list"
+        "full_uri": custom_uri_prefix + "apple.yaml"
     },
     {
         "name": "CustomReject",
         "behavior": "classical",
         "proxy_group": "REJECT",
         "uri_suffix": "custom/reject.yaml",
-        "full_uri": custom_uri_prefix + "reject.list"
+        "full_uri": custom_uri_prefix + "reject.yaml"
     },
 
     {
@@ -75,21 +75,21 @@ ruleset_items_custom =  [
         "behavior": "classical",
         "proxy_group": "🎬 Movies and TV",
         "uri_suffix": "custom/movie.yaml",
-        "full_uri": custom_uri_prefix + "movie.list"
+        "full_uri": custom_uri_prefix + "movie.yaml"
     },
     {
         "name": "CustomGame",
         "behavior": "classical",
         "proxy_group": "🎯 游戏平台",
         "uri_suffix": "custom/game.yaml",
-        "full_uri": custom_uri_prefix + "game.list"
+        "full_uri": custom_uri_prefix + "game.yaml"
     },
     {
         "name": "CustomMicrosoft",
         "behavior": "classical",
         "proxy_group": "Ⓜ️ 微软服务",
         "uri_suffix": "custom/microsoft.yaml",
-        "full_uri": custom_uri_prefix + "microsoft.list"
+        "full_uri": custom_uri_prefix + "microsoft.yaml"
 
     },
     {
@@ -97,7 +97,7 @@ ruleset_items_custom =  [
         "behavior": "classical",
         "proxy_group": "🌎 全球代理",
         "uri_suffix": "custom/proxy.yaml",
-        "full_uri": custom_uri_prefix + "proxy.list"
+        "full_uri": custom_uri_prefix + "proxy.yaml"
     }
 
 
