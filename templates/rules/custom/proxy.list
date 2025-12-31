@@ -12,3 +12,11 @@ DOMAIN,plugins.jetbrains.com
 DOMAIN-SUFFIX,marketplace.jetbrains.com
 DOMAIN-SUFFIX,udemy.com
 DOMAIN-SUFFIX,clashverge.dev
+DOMAIN-SUFFIX,prod.telemetry.console.api.aws
+DOMAIN-SUFFIX,prod.pl.panorama.console.api.aws
+DOMAIN-SUFFIX,prod.assets.shortbread.aws.dev
+DOMAIN-SUFFIX,prod.pa.cdn.uis.awsstatic.com
+DOMAIN-SUFFIX,signin.aws
+DOMAIN-SUFFIX,awsapps.com
+
+
