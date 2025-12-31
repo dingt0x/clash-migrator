@@ -5,6 +5,7 @@ from typing import List, Dict
 
 import aiofiles
 
+
 # load files and return YAML of the rules
 
 async def parse_file_to_list(file_path: Path) -> List[str]:
@@ -21,9 +22,9 @@ async def parse_file_to_list(file_path: Path) -> List[str]:
         return res
 
 class RuleGenerator:
-    def __init__(self, rule_dir: str, tail_rule_file: str, rule_group_map: List[Dict[str, str]]):
+    def __init__(self, rule_dir: str, rule_group_map: List[Dict[str, str]]):
         self.rule_dir = rule_dir
-        self.tail_rule_file = tail_rule_file
+        # self.tail_rule_file = tail_rule_file
         self.rule_group_map = rule_group_map
         self.all_rule_set = set()
 
@@ -98,8 +99,9 @@ class RuleGenerator:
         print(f"生成rule配置共耗时 {time.time() - start_time} 秒")
         if not res:
             raise ValueError("生成配置为空")
-        with open(self.tail_rule_file, 'r') as f:
-            default_rule = f.read()
 
 
-        return res + default_rule
+
+        return res
+
+

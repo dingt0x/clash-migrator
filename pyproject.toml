@@ -9,12 +9,12 @@ dependencies = [
     "pyyaml",
     "urllib3",
     "aiofiles",
+    "dotenv",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest",
-    "dotenv",
 ]
 
 [tool.pytest.ini_options]

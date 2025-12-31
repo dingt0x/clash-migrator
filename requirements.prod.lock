@@ -10,6 +10,8 @@ aiosignal==1.4.0
     # via aiohttp
 attrs==25.4.0
     # via aiohttp
+dotenv==0.9.9
+    # via clash-migrator (pyproject.toml)
 frozenlist==1.8.0
     # via
     #   aiohttp
@@ -24,6 +26,8 @@ propcache==0.4.1
     # via
     #   aiohttp
     #   yarl
+python-dotenv==1.2.1
+    # via dotenv
 pyyaml==6.0.3
     # via clash-migrator (pyproject.toml)
 urllib3==2.6.2
