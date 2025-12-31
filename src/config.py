@@ -38,8 +38,71 @@ ruleset_tpl_path=Path(__file__).parent / "rule_providers.yaml.tpl"
 
 # url is "[gh_proxy/] + ruleset_uri_prefix + uri_suffix"
 # 元素中使用full_uri可以覆盖这个值
+custom_uri_prefix="https://raw.githubusercontent.com/dingt0x/acl4ssr2custom/refs/heads/main/custom_rules/"
+custom_uri_prefix = gh_proxy + "/" + custom_uri_prefix if gh_proxy else custom_uri_prefix
+ruleset_items_custom =  [
+    {
+        "name": "CustomDirect",
+        "behavior": "classical",
+        "proxy_group": "DIRECT",
+        "uri_suffix": "custom/direct.yaml",
+        "full_uri": custom_uri_prefix + "direct.list"
+    },
+    {
+        "name": "CustomAI",
+        "behavior": "classical",
+        "proxy_group": "⚛️ AI",
+        "uri_suffix": "custom/ai.yaml",
+        "full_uri": custom_uri_prefix + "ai.list"
+    },
+    {
+        "name": "CustomApple",
+        "behavior": "classical",
+        "proxy_group": "🍎 Apple",
+        "uri_suffix": "custom/apple.yaml",
+        "full_uri": custom_uri_prefix + "apple.list"
+    },
+    {
+        "name": "CustomReject",
+        "behavior": "classical",
+        "proxy_group": "REJECT",
+        "uri_suffix": "custom/reject.yaml",
+        "full_uri": custom_uri_prefix + "reject.list"
+    },
 
-ruleset_items = [
+    {
+        "name": "CustomMovie",
+        "behavior": "classical",
+        "proxy_group": "🎬 Movies and TV",
+        "uri_suffix": "custom/movie.yaml",
+        "full_uri": custom_uri_prefix + "movie.list"
+    },
+    {
+        "name": "CustomGame",
+        "behavior": "classical",
+        "proxy_group": "🎯 游戏平台",
+        "uri_suffix": "custom/game.yaml",
+        "full_uri": custom_uri_prefix + "game.list"
+    },
+    {
+        "name": "CustomMicrosoft",
+        "behavior": "classical",
+        "proxy_group": "Ⓜ️ 微软服务",
+        "uri_suffix": "custom/microsoft.yaml",
+        "full_uri": custom_uri_prefix + "microsoft.list"
+
+    },
+    {
+        "name": "CustomProxy",
+        "behavior": "classical",
+        "proxy_group": "🌎 全球代理",
+        "uri_suffix": "custom/proxy.yaml",
+        "full_uri": custom_uri_prefix + "proxy.list"
+    }
+
+
+]
+_ruleset_items = [
     {
         "name": "LocalAreaNetwork",
         "behavior": "classical",
@@ -224,3 +287,4 @@ ruleset_items = [
 
 
 
+ruleset_items = ruleset_items_custom + _ruleset_items
