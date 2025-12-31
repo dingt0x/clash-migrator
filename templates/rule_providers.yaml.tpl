@@ -1,4 +1,4 @@
-rule-providers: []
+rule-providers: {}
 #  ai: {{type: http, behavior: domain, url: 'https://{FQDN_RULE_PROVIDER}/AI.yaml', path: './ruleset/{ruleset_path}/AI.yaml', interval: 86400}}
 #  openai: {{type: http, behavior: domain, url: 'https://{FQDN_RULE_PROVIDER}/OpenAi.yaml', path: './ruleset/{ruleset_path}/OpenAi.yaml', interval: 86400}}
 #  reject: {{type: http, behavior: domain, url: 'https://{FQDN_RULE_PROVIDER}/reject.yaml', path: './ruleset/{ruleset_path}/reject.yaml', interval: 86400}}
