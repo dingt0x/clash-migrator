@@ -1,0 +1,2 @@
+rule-providers:
+{items}

@@ -2,7 +2,7 @@
 name = "clash-migrator"
 version = "0.1.0"
 description = "a migrator of migrating subscribes and rules"
-requires-python = "==3.13"
+requires-python = "==3.13.11"
 
 dependencies = [
     "aiohttp",

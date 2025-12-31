@@ -43,7 +43,6 @@ ruleset=🐟 漏网之鱼,[]FINAL
 ;设置规则标志位
 EOF
 
-source_prefix="https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash"
 # https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/Ruleset/AI.yaml
 #provider_source_prefix="https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Providers/Ruleset"
 
@@ -51,6 +50,12 @@ repo_base_dir=$(git rev-parse --show-toplevel 2>/dev/null)
 source "${repo_base_dir}/.env"
 cd "${repo_base_dir}"
 download_rule_path="${repo_base_dir}/templates/rules"
+source_prefix="https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash"
+
+if [ -n "$GH_PROXY" ]; then
+    source_prefix="${GH_PROXY}/${source_prefix}"
+fi
+
 
 download() {
     rule_group=$1
