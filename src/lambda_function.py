@@ -37,7 +37,9 @@ async def generate_clash_config_str(url_list: List[str], prefix_list: List[str])
     proxy_filter = os.environ.get("PROXY_FILTER", config.proxy_filter)
     static_proxies = config.static_proxies
 
-    rule_generator = rule.RuleGenerator(rule_dir, rule_group_map)
+    s3_path = config.s3_path
+
+    rule_generator = rule.RuleGenerator(rule_dir, rule_group_map,s3_path)
     proxy_getter = proxy.ProxyGetter(url_list, prefix_list, proxy_filter, static_proxies=static_proxies)
     tmpl_loader = clash.TmplLoader(clash_tmpl_file)
     # fqdn_of_rule_provider = os.environ.get("FQDN_RULE_PROVIDER", "")

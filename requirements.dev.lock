@@ -10,6 +10,12 @@ aiosignal==1.4.0
     # via aiohttp
 attrs==25.4.0
     # via aiohttp
+boto3==1.42.22
+    # via clash-migrator (pyproject.toml)
+botocore==1.42.22
+    # via
+    #   boto3
+    #   s3transfer
 dotenv==0.9.9
     # via clash-migrator (pyproject.toml)
 frozenlist==1.8.0
@@ -20,6 +26,10 @@ idna==3.11
     # via yarl
 iniconfig==2.3.0
     # via pytest
+jmespath==1.0.1
+    # via
+    #   boto3
+    #   botocore
 multidict==6.7.0
     # via
     #   aiohttp
@@ -36,11 +46,19 @@ pygments==2.19.2
     # via pytest
 pytest==9.0.2
     # via clash-migrator (pyproject.toml)
+python-dateutil==2.9.0.post0
+    # via botocore
 python-dotenv==1.2.1
     # via dotenv
 pyyaml==6.0.3
     # via clash-migrator (pyproject.toml)
+s3transfer==0.16.0
+    # via boto3
+six==1.17.0
+    # via python-dateutil
 urllib3==2.6.2
-    # via clash-migrator (pyproject.toml)
+    # via
+    #   clash-migrator (pyproject.toml)
+    #   botocore
 yarl==1.22.0
     # via aiohttp
