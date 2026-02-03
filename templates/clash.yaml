@@ -3,7 +3,7 @@ allow-lan: false
 bind-address: '*'
 mode: rule
 log-level: error
-external-controller: '127.0.0.1:9090'
+# external-controller: '127.0.0.1:9090'
 sniffer:
     enable: true
     force-dns-mapping: true
