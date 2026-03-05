@@ -11,8 +11,12 @@ class ProxyGroup:
 
     def __call__(self):
         group_custom = os.environ.get("GROUP_CUSTOM", config.group_custom)
+        group_custom_name_list = []
+        if ";" in group_custom:
+            group_custom_name_list = group_custom.split(';')
+
         group_custom_list = []
-        for i in group_custom.split(';'):
+        for i in group_custom_name_list:
             name1 = i.split(',')[0]
             name2 = name1 + '♻️ 自动选择'
             proxy_filter = i.split(',')[1:]
