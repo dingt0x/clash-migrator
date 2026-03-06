@@ -9,7 +9,7 @@ def test_lambda_handler():
     load_dotenv(find_dotenv())
     cache_dir = Path(__file__).parent.parent / ".cache"
     target_file1 = cache_dir / "clash_rule_test.yaml"
-    x = lambda_handler({}, {})
+    x = lambda_handler({"queryStringParameters": {"token": "test"}}, {})
 
     if not cache_dir.exists():
         cache_dir.mkdir()

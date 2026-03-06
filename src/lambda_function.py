@@ -93,7 +93,28 @@ async def generate_clash_config_str(url_list: List[str], prefix_list: List[str])
 
 
 def lambda_handler(event, context):
-    url_list, prefix_list = asyncio.run(get_url_and_prefix_list())
+    # Read token from query string: https://lambda.url/?token=xxxx
+    token = event.get("queryStringParameters", {}).get("token", "")
+    if not token:
+        return {
+            'statusCode': 401,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({}, ensure_ascii=False)
+        }
+
+    url_list, prefix_list = asyncio.run(get_url_and_prefix_list(token))
+    if not url_list:
+        return {
+            'statusCode': 401,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({}, ensure_ascii=False)
+        }
 
     try:
         format_type = event.get("queryStringParameters", {}).get("format", "clash")
