@@ -18,7 +18,7 @@ dns:
     default-nameserver: ['tcp://223.5.5.5', 'tls://223.5.5.5']
     enhanced-mode: fake-ip
     fake-ip-range: 198.18.0.1/16
-    fake-ip-filter: ['*.lan', '*.linksys.com', +.pool.ntp.org, localhost.ptlogin2.qq.com]
+    fake-ip-filter: ['*.lan', '*.linksys.com', +.pool.ntp.org, localhost.ptlogin2.qq.com,'*.tindings.fun', '*.gehealthcare.com']
     nameserver: ['https://dns.alidns.com/dns-query']
     fallback: ['https://doh.pub/dns-query', 'https://dns.google/dns-query']
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
