@@ -80,8 +80,8 @@ class ProxyGroup:
                     filter(lambda x: any(f in x for f in x_proxy_filter_list), self.proxy_name_list))
                 custom_proxies.extend(x_proxy_name_list)
                 proxy_group.setdefault('proxies', []).extend(x_proxy_name_list)
-
-            elif proxy_group_name == "🔰 手动选择":
+#             elif proxy_group_name == "🔰 手动选择":
+            else:
                 proxy_group_proxies = proxy_group.setdefault('proxies', [])
 
                 manual_proxy_name_list = list(
